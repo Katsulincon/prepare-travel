@@ -1,0 +1,17 @@
+<h1><%= @country.name %></h1>
+
+
+<% @country.places.each do |place| %>
+  <%= place.name %>
+  <% place.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+
+
+<h4>Add places whwre you want to go</h4>
+<%= simple_form_for @place, :url => country_places_path(@country), method: :post do |f| %>
+<%= f.input :name %>
+<%= f.input :photos, as: :file, input_html: {multiple: true} %>
+<%= f.submit %>
+<% end %>

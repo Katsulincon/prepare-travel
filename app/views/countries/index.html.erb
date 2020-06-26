@@ -1,0 +1,12 @@
+<h1>country index page</h1>
+
+<% @countries.each do |cntry| %>
+  <%= link_to country_path(cntry) do  %>
+    <%= cntry.name %>
+  <% end %>
+<% end %>
+
+<%= simple_form_for @country, :url => create_country_path, method: :post do |f| %>
+<%= f.input :name %>
+<%= f.submit %>
+<% end %>
